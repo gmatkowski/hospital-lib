@@ -14,7 +14,6 @@ namespace Hospital.DB
 
         public HospitalContext(string cs) : base(cs) { }
 
-
         protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
         {
             var errors = new List<DbValidationError>();
