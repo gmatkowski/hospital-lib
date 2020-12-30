@@ -1,9 +1,12 @@
 ﻿using Hospital.Abstracts;
 using Hospital.DB;
+using Hospital.Exceptions;
 using Hospital.Interfaces;
 using Hospital.Models;
-using System.Data.Entity;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 
 namespace Hospital.Repositories
 {
@@ -14,6 +17,34 @@ namespace Hospital.Repositories
         public bool HasAdmins()
         {
             return _dataContext.Set<User>().Where(o => (o is Admin)).Count() > 0;
+        }
+
+        public User GetByUsername(string username)
+        {
+            try
+            {
+                return _dataContext.Set<User>().Where(o => o.username == username).First();
+            }
+            catch(Exception ex)
+            {
+                throw new UserNotFoundException();
+            }
+        }
+
+        public List<User> GetListingForUser(User user)
+        { 
+
+            IQueryable<User> query = _dataContext.Set<User>();
+
+            switch (user.GetType().Name)
+            {
+                case "Nurse":
+                case "Doctor":
+                    query = query.Where(o => o is Nurse || o is Doctor);
+                    break;
+            }
+
+            return query.ToList();
         }
     }
 }

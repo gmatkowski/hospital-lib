@@ -7,12 +7,12 @@ namespace Hospital.Abstracts
     public abstract class Employee: User
     {
         [Index("user_pesel", 0, IsUnique = true)]
-        [Required, Range(11, 11, ErrorMessage = "Nieprawidłowy numer NIP")]
-        public int pesel { get; set; }
+        [Required, MaxLength(11, ErrorMessage = "Nieprawidłowy numer PESEL") ,MinLength(11, ErrorMessage = "Nieprawidłowy numer PESEL")]
+        public string pesel { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0}, {1}", base.ToString(), this.pesel.ToString());
+            return String.Format("{0}, {1}", base.ToString(), this.pesel);
         }
     }
 }

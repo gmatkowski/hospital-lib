@@ -21,8 +21,16 @@ namespace Hospital.Abstracts
             return _dataContext.Set<T>().Count();
         }
 
+        public bool Exists(T entity)
+        {
+            return _dataContext.Set<T>().Local.Any(e => e == entity);
+        }
+
         public void Delete(T entity)
         {
+            if (!this.Exists(entity)) { 
+                _dataContext.Set<T>().Attach(entity);
+            }
             _dataContext.Set<T>().Remove(entity);
             _dataContext.SaveChanges();
         }
@@ -50,6 +58,10 @@ namespace Hospital.Abstracts
 
         public void Update(T entity)
         {
+            if (!this.Exists(entity))
+            {
+                _dataContext.Set<T>().Attach(entity);
+            }
             _dataContext.Entry<T>(entity).State = EntityState.Modified;
             _dataContext.SaveChanges();
         }

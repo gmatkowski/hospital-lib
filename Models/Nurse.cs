@@ -2,11 +2,11 @@
 
 namespace Hospital.Models
 {
-    public class Admin : User
+    public class Nurse : Employee
     {
         public override string GetRoleName()
         {
-            return "Administrator";
+            return "Pielęgniarka";
         }
     }
 }

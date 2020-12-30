@@ -8,12 +8,17 @@ namespace Hospital.Models
     public class Doctor : Employee
     {
         [Index("user_specialization", 0, IsUnique = false)]
-        [Required, MinLength(3, ErrorMessage = "Pole {0} musi zawierać minimum {1} znaków")]
+        [Required, MinLength(3, ErrorMessage = "Pole {0} musi zawierać minimum {1} znaków"), MaxLength(40, ErrorMessage = "Pole {0} jest za długie (max {1} znaków)")]
         public string specialization  {get;set;}
 
         [Index("user_pwz", 0, IsUnique = true)]
-        [Required, Range(7,7, ErrorMessage = "Nieprawidłowy numer PWZ")]
-        public int pwz { get; set; }
+        [Required, MinLength(7, ErrorMessage = "Nieprawidłowy numer PWZ"), MaxLength(7, ErrorMessage = "Nieprawidłowy numer PWZ")]
+        public string pwz { get; set; }
+
+        public override string GetRoleName()
+        {
+            return "Lekarz";
+        }
 
         public override string ToString()
         {

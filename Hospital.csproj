@@ -100,8 +100,9 @@
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Doctor.cs" />
-    <Compile Include="Models\Nurs.cs" />
+    <Compile Include="Models\Nurse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Exceptions\UserNotFoundException.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Abstracts\User.cs" />
     <Compile Include="Rules\UniqueAttribute.cs" />
