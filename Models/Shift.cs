@@ -28,5 +28,8 @@ namespace Hospital.Models
 
         [ForeignKey("user_id")]
         public User user { get; set; }
+
+        [ForeignKey("user_id")]
+        public Doctor doctor { get; set; }
     }
 }
