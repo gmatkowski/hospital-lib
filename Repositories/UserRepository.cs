@@ -35,13 +35,9 @@ namespace Hospital.Repositories
         { 
             IQueryable<User> query = _dataContext.Set<User>();
 
-            switch (user.GetType().Name)
+            if(user is Employee)
             {
-                case "Nurse":
-                case "Doctor":
-                    query = query.Where(o => o is Nurse || o is Doctor);
-                    query = query.Where(o => o is Employee);
-                    break;
+                query = query.Where(o => o is Employee);
             }
 
             return query.ToList();
