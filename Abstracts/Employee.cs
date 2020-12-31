@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hospital.Models;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +11,9 @@ namespace Hospital.Abstracts
         [Index("user_pesel", 0, IsUnique = true)]
         [Required, MaxLength(11, ErrorMessage = "Nieprawidłowy numer PESEL") ,MinLength(11, ErrorMessage = "Nieprawidłowy numer PESEL")]
         public string pesel { get; set; }
+
+        [ForeignKey("user_id")]
+        public List<Shift> Shifts { get; set; }
 
         public override string ToString()
         {

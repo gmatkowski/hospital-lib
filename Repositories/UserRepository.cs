@@ -33,7 +33,6 @@ namespace Hospital.Repositories
 
         public List<User> GetListingForUser(User user)
         { 
-
             IQueryable<User> query = _dataContext.Set<User>();
 
             switch (user.GetType().Name)
@@ -41,6 +40,7 @@ namespace Hospital.Repositories
                 case "Nurse":
                 case "Doctor":
                     query = query.Where(o => o is Nurse || o is Doctor);
+                    query = query.Where(o => o is Employee);
                     break;
             }
 

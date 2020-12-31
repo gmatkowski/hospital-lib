@@ -99,7 +99,7 @@
                     if (query.Any())
                     {
                         return new DbValidationError(label,
-                            string.Format("Taka nazwa jest już zajęta", entityName, String.Join(" and ", group.ToArray())));
+                            string.Format("Istnieje", entityName, String.Join(" and ", group.ToArray())));
                     }
                 }
             }

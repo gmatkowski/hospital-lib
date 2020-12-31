@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq.Dynamic;
 using Hospital.Abstracts;
+using Hospital.Models;
 using Hospital.Rules;
 
 namespace Hospital.DB
@@ -11,6 +12,7 @@ namespace Hospital.DB
     public class HospitalContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
 
         public HospitalContext(string cs) : base(cs) { }
 

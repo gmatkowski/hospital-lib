@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\BaseRepository.cs" />
+    <Compile Include="Interfaces\IShiftRepository.cs" />
+    <Compile Include="Models\Shift.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Abstracts\Employee.cs" />
     <Compile Include="DB\DatabaseBootstrapper.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Models\Nurse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\UserNotFoundException.cs" />
+    <Compile Include="Repositories\ShiftRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Abstracts\User.cs" />
     <Compile Include="Rules\UniqueAttribute.cs" />
